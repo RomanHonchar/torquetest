@@ -17,8 +17,6 @@ resource "aws_instance" "ec2" {
 resource "aws_security_group" "webtraffic" {
   name = "Allow HTTPS"
 
-  vpc_id = "vpc-00aefe61eff2d0c23"
-
   ingress {
     description = "HTTP"
     from_port   = 80
