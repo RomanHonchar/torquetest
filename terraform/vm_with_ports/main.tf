@@ -11,6 +11,7 @@ resource "aws_instance" "ec2" {
   ami = var.ami_centos
   instance_type = "t2.micro"
   security_groups = [aws_security_group.webtraffic.name]
+  key_name = "romanh-us-west2"
 }
 
 resource "aws_security_group" "webtraffic" {
