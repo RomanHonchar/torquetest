@@ -4,7 +4,7 @@ provider "aws" {
 
 variable "ami_centos" {
   type = string
-  default = "ami-0905a3c97561e0b69"
+  default = "ami-0b14f0a2730f8cbd2"
 }
 
 resource "aws_instance" "ec2" {
@@ -50,4 +50,8 @@ resource "aws_security_group" "webtraffic" {
 
 output "ec2_ip" {
   value = aws_instance.ec2.public_ip
+}
+
+output "output_region" {
+  value = var.aws_region
 }
