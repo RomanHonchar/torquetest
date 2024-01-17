@@ -48,10 +48,14 @@ resource "aws_security_group" "webtraffic" {
   }
 }
 
+data "aws_region" "current" {
+  provider = "aws.region"
+}
+
+
 output "ec2_ip" {
   value = aws_instance.ec2.public_ip
 }
 
 output "output_region" {
-  value = var.aws_region
-}
+  value = "${data.aws_region.current.name}"
