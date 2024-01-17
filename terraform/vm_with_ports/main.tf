@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "eu-west-1"
 }
 
 variable "ami_centos" {
   type = string
-  default = "ami-0b14f0a2730f8cbd2"
+  default = "ami-0905a3c97561e0b69"
 }
 
 resource "aws_instance" "ec2" {
