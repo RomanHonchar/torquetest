@@ -59,3 +59,4 @@ output "ec2_ip" {
 
 output "output_region" {
   value = "${data.aws_region.current.name}"
+}
