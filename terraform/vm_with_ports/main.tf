@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-west-2"
 }
 
 variable "ami_centos" {
   type = string
-  default = "ami-0b14f0a2730f8cbd2"
+  default = "ami-008fe2fc65df48dac"
 }
 
 resource "aws_instance" "ec2" {
@@ -55,8 +55,4 @@ data "aws_region" "current" {
 
 output "ec2_ip" {
   value = aws_instance.ec2.public_ip
-}
-
-output "output_region" {
-  value = "${data.aws_region.current.name}"
 }
