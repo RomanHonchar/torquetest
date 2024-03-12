@@ -1,7 +1,11 @@
 ---
-- hosts: all  # This targets all machines in your inventory
+- hosts: {{ nodes }}  # This targets all machines in your inventory
   become: true  # Allows tasks to run with elevated privileges
   tasks:
+    - name: Configure virtual machine
+      username: "{{ username }}"
+      password: "{{ password }}"
+
     - name: Update package cache
       apt: update_cache=yes cache_valid_time=3600
 
