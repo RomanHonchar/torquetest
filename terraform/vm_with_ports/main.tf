@@ -2,13 +2,13 @@ provider "aws" {
   region = "us-west-2"
 }
 
-variable "ami_centos" {
+variable "ami_debian" {
   type = string
-  default = "ami-008fe2fc65df48dac"
+  default = "ami-0c2644caf041bb6de"
 }
 
 resource "aws_instance" "ec2" {
-  ami = var.ami_centos
+  ami = var.ami_debian
   instance_type = "t2.micro"
   security_groups = [aws_security_group.webtraffic.name]
   key_name = "romanh-us-west2"
