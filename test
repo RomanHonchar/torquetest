@@ -1,1 +1,3 @@
 test
+
+kubectl port-forward --address 0.0.0.0 service/drupal-service 8080:80 -n torque-ns
