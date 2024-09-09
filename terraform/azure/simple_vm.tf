@@ -25,8 +25,10 @@ resource "azurerm_public_ip" "vm_public_ip" {
   name                = "my-vm-public-ip"
   location            = data.azurerm_resource_group.existing_rg.location
   resource_group_name = data.azurerm_resource_group.existing_rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"       # Change to Static for Standard SKU
+  sku                 = "Standard"     # Standard SKU for the public IP
 }
+
 
 # Create a network interface for the VM
 resource "azurerm_network_interface" "vm_nic" {
