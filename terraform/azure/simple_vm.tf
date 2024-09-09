@@ -93,8 +93,8 @@ resource "azurerm_virtual_machine" "vm" {
 
   os_profile {
     computer_name  = "myvm"
-    admin_username = "admin"
-    admin_password = "admin!"  # Use a stronger password or SSH keys for security
+    admin_username = "csadmin"
+    admin_password = "Cspassword-1"  # Use a stronger password or SSH keys for security
   }
 
   os_profile_linux_config {
