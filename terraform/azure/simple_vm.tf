@@ -85,9 +85,9 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-focal"
-    sku       = "24_04-lts-gen2"  # Ubuntu 24.04 image
+    publisher = "canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"  # Ubuntu 24.04 image
     version   = "latest"
   }
 
