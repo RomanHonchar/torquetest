@@ -3,8 +3,8 @@
   hosts: "{{ target_host }}"
   gather_facts: no
   vars:
-    ansible_user: csadmin
-    ansible_ssh_pass: Cspassword-1
+    ansible_user: "{{ username }}"
+    ansible_ssh_pass: "{{ password }}"
   tasks:
     - name: Check the kernel version
       ansible.builtin.shell: uname -r
