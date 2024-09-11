@@ -1,7 +1,12 @@
-#!/bin/bash
+---
+- name: Check kernel version on Linux VM
+  hosts: "{{ target_host }}"
+  gather_facts: no
+  tasks:
+    - name: Check the kernel version
+      ansible.builtin.shell: uname -r
+      register: kernel_version
 
-# Use `uname -r` to get the kernel version
-kernel_version=$(uname -r)
-
-# Print the kernel version
-echo "Kernel version: $kernel_version"
+    - name: Display the kernel version
+      ansible.builtin.debug:
+        msg: "Kernel version is: {{ kernel_version.stdout }}"
