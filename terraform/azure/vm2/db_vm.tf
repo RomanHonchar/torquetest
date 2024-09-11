@@ -61,6 +61,19 @@ resource "azurerm_network_security_group" "vm_nsg" {
     source_address_prefix      = "176.37.192.93/32"
     destination_address_prefix = "*"
   }
+
+  security_rule {
+    name                       = "AllowAllLocal"
+    priority                   = 1011
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "192.168.25.0/24"
+    destination_address_prefix = "*"
+  }
+
 }
 
 # Associate the NIC with the security group
