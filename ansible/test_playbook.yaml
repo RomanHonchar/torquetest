@@ -10,6 +10,7 @@
       ansible.builtin.shell: uname -r
       register: kernel_version
 
-    - name: Display the kernel version
-      ansible.builtin.debug:
-        msg: "Kernel version is: {{ kernel_version.stdout }}"
+    - name: Export outputs
+    torque.collections.export_torque_outputs:
+      outputs:
+        output1: “{{ kernel_version }}”
