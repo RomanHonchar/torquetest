@@ -11,6 +11,6 @@
       register: kernel_version
 
     - name: Export outputs
-    torque.collections.export_torque_outputs:
-      outputs:
-        output1: “{{ kernel_version }}”
+      torque.collections.export_torque_outputs:
+        outputs:
+          output1: “{{ kernel_version }}”
