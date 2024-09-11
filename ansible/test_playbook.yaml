@@ -13,4 +13,4 @@
     - name: Export outputs
       torque.collections.export_torque_outputs:
         outputs:
-          output1: “{{ kernel_version }}”
+          output1: "{{ kernel_version }}"
