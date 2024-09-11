@@ -124,3 +124,8 @@ resource "azurerm_virtual_machine" "vm" {
 output "public_ip_address" {
   value = azurerm_public_ip.vm_public_ip.ip_address
 }
+
+output "private_ip_address" {
+  value = azurerm_network_interface.example.ip_configuration[0].private_ip_address
+}
+
