@@ -2,6 +2,9 @@
 - name: Check kernel version on Linux VM
   hosts: "{{ target_host }}"
   gather_facts: no
+  vars:
+    ansible_user: csadmin
+    ansible_ssh_pass: Cspassword-1
   tasks:
     - name: Check the kernel version
       ansible.builtin.shell: uname -r
