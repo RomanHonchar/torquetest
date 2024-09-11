@@ -1,12 +1,13 @@
 ---
 - name: Check kernel version on Linux VM
-  hosts: "{{ target_host }}"
+  hosts: localhost
   gather_facts: no
   vars:
     ansible_user: "{{ username }}"
     ansible_ssh_pass: "{{ password }}"
   tasks:
     - name: Check the kernel version
+      delegate_to: "{{ target_host }}"
       ansible.builtin.shell: uname -r
       register: kernel_version
 
