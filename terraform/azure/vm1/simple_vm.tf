@@ -89,6 +89,9 @@ resource "azurerm_virtual_machine" "vm" {
   network_interface_ids = [azurerm_network_interface.vm_nic.id]
   vm_size               = "Standard_B1s"  # Choose your VM size
 
+  # Auto-delete OS disk when VM is destroyed
+  delete_os_disk_on_termination = true
+
   storage_os_disk {
     name              = "my-os-disk"
     caching           = "ReadWrite"
