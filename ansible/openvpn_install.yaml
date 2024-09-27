@@ -1,0 +1,42 @@
+---
+- name: Install OpenVPN using openvpn-install.sh
+  hosts: localhost  # The tasks will be run from localhost but delegated to the target host
+  become: yes
+  gather_facts: no
+  vars:
+    ansible_user: "{{ username }}"
+    ansible_ssh_pass: "{{ password }}"
+    target_host: "remote_host"  # Define the target host dynamically
+
+  tasks:
+    - name: Install wget on target host
+      apt:
+        name: wget
+        state: present
+      delegate_to: "{{ target_host }}"
+
+    - name: Download OpenVPN install script on target host
+      get_url:
+        url: https://git.io/vpn
+        dest: /tmp/openvpn-install.sh
+        mode: '0755'
+      delegate_to: "{{ target_host }}"
+
+    - name: Install OpenVPN using expect on target host
+      expect:
+        command: sudo bash /tmp/openvpn-install.sh
+        responses:
+          'Public IPv4 address / hostname': ''
+          'Protocol \[1\]': '1'
+          'Port \[1194\]': ''
+          'DNS server \[1\]': '3'
+          'Name \[client\]': ''
+      delegate_to: "{{ target_host }}"
+      environment:
+        LC_ALL: "C"
+
+    - name: Clean up the OpenVPN install script on target host
+      file:
+        path: /tmp/openvpn-install.sh
+        state: absent
+      delegate_to: "{{ target_host }}"
