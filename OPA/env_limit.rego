@@ -1,0 +1,10 @@
+package torque.consumption
+import future.keywords.if
+
+result = { "decision": "Denied", "reason": "Owner already have an active enviroinment in this space" } if {
+   owner_active_environments_in_space >= 1
+}
+
+result = { "decision": "Approved", "reason": "Owner don't have an active enviroinment in this space" } if {
+   owner_active_environments_in_space < 1
+} 
