@@ -2,6 +2,10 @@ package torque.environment
 import future.keywords.if
 
 result = { "decision": "Denied", "reason": "Requested environment duration exceeds 180 minutes" } if {
+   input.duration_minutes >= 300
+}
+
+result = { "decision": "Manual", "reason": "Manual approve is needed" } if {
    input.duration_minutes >= 180
 }
 
